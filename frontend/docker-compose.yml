@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "4200:8000"
+    volumes:
+      - "./src:/app/src:delegated"
