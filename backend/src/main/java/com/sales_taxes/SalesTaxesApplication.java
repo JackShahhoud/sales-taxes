@@ -1,4 +1,4 @@
-package com.sales_taxes.Salex.Taxes;
+package com.sales_taxes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
