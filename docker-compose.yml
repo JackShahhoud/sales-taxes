@@ -7,10 +7,12 @@ services:
       context: ./frontend
     ports:
       - "4200:4200"
+    volumes:
+      - "./frontend/src:/app/src:delegated"
 
   backend:
     build:
       dockerfile: ./Dockerfile
       context: ./backend
     ports:
-      - "8080:8081"
+      - "8080:8080"
