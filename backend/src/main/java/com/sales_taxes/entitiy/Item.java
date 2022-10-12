@@ -1,15 +1,13 @@
 package com.sales_taxes.entitiy;
 
+import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
-public class Item {
+public abstract class Item {
 
   long id;
-
   String name;
-
-  double price;
-
+  BigDecimal preTaxPrice;
 
 }

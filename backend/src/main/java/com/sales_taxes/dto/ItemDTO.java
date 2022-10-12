@@ -1,22 +1,20 @@
 package com.sales_taxes.dto;
 
-import com.sales_taxes.entitiy.Item;
+import com.sales_taxes.entitiy.GroceryItem;
+import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
 public class ItemDTO {
 
   long id;
-
   String name;
+  BigDecimal preTaxPrice;
 
-  double price;
-
-
-  public void convertToDTO(Item item) {
+  public void convertToDTO(GroceryItem item) {
     this.id = item.getId();
     this.name = item.getName();
-    this.price = item.getPrice();
+    this.preTaxPrice = item.getPreTaxPrice();
   }
 
 }
