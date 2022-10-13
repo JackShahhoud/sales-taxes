@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>RECEIPT</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-list>
+    <div mat-subheader>### INPUT</div>
+    <mat-list-item *ngFor="let item of receipt.items">
+      <mat-icon mat-list-icon>shopping_cart</mat-icon>
+      {{item.amount}} {{item.name}} at {{item.preTaxPrice.toFixed(2)}}
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <div mat-subheader>### OUTPUT</div>
+    <mat-list-item *ngFor="let item of receipt.items">
+      <mat-icon mat-list-icon>shopping_cart</mat-icon>
+      {{item.amount}} {{item.name}}: {{item.postTaxPrice.toFixed(2)}}
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon mat-list-icon>attach_money</mat-icon>
+      Sales Taxes: {{receipt.salesTaxes.toFixed(2)}}
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon mat-list-icon>attach_money</mat-icon>
+      Total: {{receipt.total.toFixed(2)}}
+    </mat-list-item>
+  </mat-list>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

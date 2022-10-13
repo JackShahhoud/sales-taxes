@@ -2,24 +2,23 @@ package com.sales_taxes.repository;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sales_taxes.entitiy.Item;
-import java.io.File;
+import com.sales_taxes.entitiy.GroceryItem;
+import com.sales_taxes.entitiy.ItemType;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashSet;
-import java.util.Random;
+import java.math.BigDecimal;
 import java.util.LinkedHashSet;
+import java.util.Random;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.ResourceUtils;
 
 @Repository
 public class ItemRepository {
 
-  LinkedHashSet<Item> items = new LinkedHashSet<>();
-  double salesTax;
-  double importedSalesTax;
+  LinkedHashSet<GroceryItem> items = new LinkedHashSet<>();
+  BigDecimal salesTax;
+  BigDecimal importedSalesTax;
 
   public ItemRepository() throws IOException {
     ObjectMapper objectMapper = new ObjectMapper();
@@ -27,24 +26,43 @@ public class ItemRepository {
     InputStream inputStream = resource.getInputStream();
 
     JsonNode shopFileJson = objectMapper.readTree(inputStream);
-    salesTax = shopFileJson.get("sales_tax").asDouble();
-    importedSalesTax = shopFileJson.get("imported_sales_tax").asDouble();
+    salesTax = BigDecimal.valueOf(shopFileJson.get("sales_tax").asDouble());
+    importedSalesTax = BigDecimal.valueOf(shopFileJson.get("imported_sales_tax").asDouble());
 
     JsonNode itemsJson = shopFileJson.get("items");
     Random random = new Random();
 
     if (itemsJson.isArray()) {
       for (JsonNode item : itemsJson) {
-        Item shopItem = new Item();
+        GroceryItem shopItem = new GroceryItem();
         shopItem.setId(random.nextInt(Integer.MAX_VALUE));
         shopItem.setName(item.get("name").asText());
-        shopItem.setPrice(item.get("price").asDouble());
+        shopItem.setPreTaxPrice(BigDecimal.valueOf(item.get("price").asDouble()));
+        shopItem.setType(ItemType.valueOf(item.get("type").asText()));
+        shopItem.setImported(item.get("imported").asBoolean());
         this.items.add(shopItem);
       }
     }
   }
 
-  public LinkedHashSet<Item> getItems() {
+  public LinkedHashSet<GroceryItem> getItems() {
     return this.items;
+  }
+
+  public GroceryItem getItem(long id) {
+    for (GroceryItem item : this.items) {
+      if (item.getId() == id) {
+        return item;
+      }
+    }
+    return null;
+  }
+
+  public BigDecimal getSalesTax() {
+    return this.salesTax;
+  }
+
+  public BigDecimal getImportedSalesTax() {
+    return this.importedSalesTax;
   }
 }

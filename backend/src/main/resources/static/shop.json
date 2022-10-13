@@ -2,39 +2,57 @@
   "items": [
     {
       "name": "book",
-      "price": 12.49
+      "price": 12.49,
+      "type": "BOOK",
+      "imported": false
     },
     {
       "name": "music CD",
-      "price": 14.99
+      "price": 14.99,
+      "type": "OTHER",
+      "imported": false
     },
     {
       "name": "chocolate bar",
-      "price": 0.85
+      "price": 0.85,
+      "type": "FOOD",
+      "imported": false
     },
     {
       "name": "imported box of chocolates",
-      "price": 10.00
+      "price": 10.00,
+      "type": "FOOD",
+      "imported": true
     },
     {
       "name": "imported bottle of perfume",
-      "price": 47.50
+      "price": 47.50,
+      "type": "OTHER",
+      "imported": true
     },
     {
       "name": "imported bottle of perfume",
-      "price": 27.99
+      "price": 27.99,
+      "type": "OTHER",
+      "imported": true
     },
     {
       "name": "bottle of perfume",
-      "price": 18.99
+      "price": 18.99,
+      "type": "OTHER",
+      "imported": false
     },
     {
       "name": "packet of headache pills",
-      "price": 9.75
+      "price": 9.75,
+      "type": "MEDICAL",
+      "imported": false
     },
     {
       "name": "box of imported chocolates",
-      "price": 11.25
+      "price": 11.25,
+      "type": "FOOD",
+      "imported": true
     }
   ],
   "sales_tax": 10,

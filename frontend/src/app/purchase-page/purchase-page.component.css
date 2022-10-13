@@ -2,6 +2,18 @@
   flex: 1 1 auto;
 }
 
+.mat-flat-button {
+  margin-left: 10px;
+}
+
 table {
   width: 100%;
+}
+
+.mat-raised-button {
+  margin: 10px;
+}
+
+.purchase {
+  text-align: center;
 }

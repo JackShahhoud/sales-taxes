@@ -1,18 +1,18 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {PurchasePageComponent} from './purchase-page.component';
+import {PurchaseDialogComponent} from './purchase-dialog.component';
 
-describe('PurchasePageComponent', () => {
-  let component: PurchasePageComponent;
-  let fixture: ComponentFixture<PurchasePageComponent>;
+describe('PurchaseDialogComponent', () => {
+  let component: PurchaseDialogComponent;
+  let fixture: ComponentFixture<PurchaseDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PurchasePageComponent]
+      declarations: [PurchaseDialogComponent]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(PurchasePageComponent);
+    fixture = TestBed.createComponent(PurchaseDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
