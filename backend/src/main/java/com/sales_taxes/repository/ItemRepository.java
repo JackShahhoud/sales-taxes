@@ -2,6 +2,7 @@ package com.sales_taxes.repository;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sales_taxes.dto.ReceiptDTO;
 import com.sales_taxes.entitiy.GroceryItem;
 import com.sales_taxes.entitiy.ItemType;
 import java.io.IOException;
@@ -20,6 +21,11 @@ public class ItemRepository {
   BigDecimal salesTax;
   BigDecimal importedSalesTax;
 
+  /**
+   * Store all items from the file shops, including sales taxes and imported sales taxes.
+   *
+   * @throws IOException If parsing exception happens during parsing shop.json file
+   */
   public ItemRepository() throws IOException {
     ObjectMapper objectMapper = new ObjectMapper();
     Resource resource = new ClassPathResource("static/shop.json");
@@ -45,10 +51,23 @@ public class ItemRepository {
     }
   }
 
+  /**
+   * Returns all stored grocery items parsed from the file.
+   *
+   * @return all stored grocery items
+   * @see GroceryItem
+   */
   public LinkedHashSet<GroceryItem> getItems() {
     return this.items;
   }
 
+  /**
+   * Returns specified grocery items by id.
+   *
+   * @param id id of the stored grocery item
+   * @return specified stored grocery item
+   * @see GroceryItem
+   */
   public GroceryItem getItem(long id) {
     for (GroceryItem item : this.items) {
       if (item.getId() == id) {
@@ -58,10 +77,20 @@ public class ItemRepository {
     return null;
   }
 
+  /**
+   * Returns sales tax parsed from the file.
+   *
+   * @return sales tax
+   */
   public BigDecimal getSalesTax() {
     return this.salesTax;
   }
 
+  /**
+   * Returns imported sales tax parsed from the file.
+   *
+   * @return imported sales tax
+   */
   public BigDecimal getImportedSalesTax() {
     return this.importedSalesTax;
   }

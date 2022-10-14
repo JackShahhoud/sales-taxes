@@ -7,7 +7,9 @@ import com.sales_taxes.entitiy.GroceryItem;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Random;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -51,6 +53,18 @@ public class ItemRepositoryTest {
 
   @Test
   public void getItems_itemsStored_shouldReturnAllItems() {
+    List<GroceryItem> groceryItemList = new ArrayList<>(this.itemRepository.getItems());
+    GroceryItem groceryItem = groceryItemList.get(0);
+    GroceryItem returnedItem = this.itemRepository.getItem(groceryItem.getId());
+    Assertions.assertEquals(returnedItem.getId(), groceryItem.getId());
+    Assertions.assertEquals(returnedItem.getName(), groceryItem.getName());
+    Assertions.assertEquals(returnedItem.getType().toString(), groceryItem.getType().toString());
+    Assertions.assertEquals(returnedItem.getPreTaxPrice().doubleValue(),
+        groceryItem.getPreTaxPrice().doubleValue());
+  }
+
+  @Test
+  public void getItem_itemStored_shouldReturnItemById() {
     LinkedHashSet<GroceryItem> returnedItems = this.itemRepository.getItems();
     Assertions.assertEquals(returnedItems.size(), this.storedItems.size());
   }

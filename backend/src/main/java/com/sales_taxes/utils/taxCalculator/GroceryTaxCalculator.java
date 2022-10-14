@@ -1,5 +1,6 @@
 package com.sales_taxes.utils.taxCalculator;
 
+import com.sales_taxes.dto.ReceiptDTO;
 import com.sales_taxes.entitiy.GroceryItem;
 import com.sales_taxes.entitiy.Item;
 import com.sales_taxes.entitiy.ItemType;
@@ -17,6 +18,13 @@ public class GroceryTaxCalculator implements TaxCalculator {
   }
 
 
+  /**
+   * Calculates taxes according to the items.
+   * Items that excepted from sales tax: BOOK, FOOD, MEDICAL.
+   * Imported items have additional import sales tax.
+   * @return sales tax applied on given item.
+   * @see ItemType
+   * */
   @Override
   public BigDecimal calculateTax(Item item) {
     GroceryItem groceryItem = (GroceryItem) item;
