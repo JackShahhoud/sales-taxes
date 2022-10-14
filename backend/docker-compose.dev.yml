@@ -4,7 +4,5 @@ services:
     image: maven:3-openjdk-18
     command: mvn spring-boot:run
     ports:
-      - "8080:8081"
-    volumes:
-      - .:/usr/src/project
+      - "8080:8080"
     working_dir: /usr/src/project

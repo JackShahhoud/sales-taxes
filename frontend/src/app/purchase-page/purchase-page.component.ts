@@ -83,7 +83,7 @@ export class PurchasePageComponent implements OnInit {
   purchase() {
     let purchaseItems: PurchaseItem[] = []
     for (let item of this.items) {
-      if (item.amount > 0) {
+      if (item.amount >= 1) {
         purchaseItems.push({id: item.id, amount: item.amount})
       }
     }

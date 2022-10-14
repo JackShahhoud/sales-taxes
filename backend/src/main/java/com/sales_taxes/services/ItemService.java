@@ -25,6 +25,12 @@ public class ItemService {
     this.itemRepository = itemRepository;
   }
 
+  /**
+   * Returns all stored items
+   *
+   * @return      list of all items
+   * @see         ItemDTO
+   */
   public List<ItemDTO> getItems() {
     List<GroceryItem> itemsList = new ArrayList<>(this.itemRepository.getItems());
     List<ItemDTO> itemsDTO = new ArrayList<>();
@@ -36,6 +42,14 @@ public class ItemService {
     return itemsDTO;
   }
 
+  /**
+   * Returns the receipt for given items, calculating taxes and prices.
+   *
+   * @param  purchaseItems  list of wanted items to purchase
+   * @return  Receipt including all items with pre- and post-tax prices,
+   *          total sales taxes and total price
+   * @see     ReceiptDTO
+   */
   public ReceiptDTO purchase(List<PurchaseItemDTO> purchaseItems) {
 
     ReceiptDTO receiptDTO = new ReceiptDTO();

@@ -4,6 +4,9 @@ import com.sales_taxes.entitiy.GroceryItem;
 import java.math.BigDecimal;
 import lombok.Data;
 
+/**
+ * ItemDTO is used to represent basic item information
+ * */
 @Data
 public class ItemDTO {
 
